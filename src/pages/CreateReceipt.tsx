@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { v4 as uuidv4 } from 'uuid';
 import { FileText, Eye, Download, Link as LinkIcon, CheckCircle } from 'lucide-react';
 import type { ReceiptData } from '../types/receipt';
-import { ISSUER_DETAILS, calculateReceiptTotals, generateReceiptNumber } from '../types/receipt';
+import { generateReceiptNumber } from '../types/receipt';
 import { saveReceipt, getLastReceiptNumber } from '../utils/storage';
 import ReceiptPreview from '../components/ReceiptPreview';
 
 export default function CreateReceipt() {
-  const navigate = useNavigate();
   const [showPreview, setShowPreview] = useState(false);
   const [receiptId, setReceiptId] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
